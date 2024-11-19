@@ -9,9 +9,9 @@ services:
     environment:
       - DB_HOST=db
       - DB_PORT=5432
-      - DB_USER=odoo_user
-      - DB_PASSWORD=123456
-      - DB_NAME=DACN_Odoo
+      - DB_USER=odoo_o8id_user
+      - DB_PASSWORD=O1bKSYUM08vpzbkkovexye1qOYbZ52JN
+      - DB_NAME=odoo_o8id
     depends_on:
       - db
     volumes:
