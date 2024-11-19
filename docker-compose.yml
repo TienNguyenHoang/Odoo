@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  odoo:
+    image: odoo-app
+    container_name: odoo
+    ports:
+      - "8069:8069"
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=odoo_user
+      - DB_PASSWORD=123456
+      - DB_NAME=DACN_Odoo
+    depends_on:
+      - db
+    volumes:
+      - ./odoo.conf:/etc/odoo/odoo.conf
+      - ./odoo/addons:/srv/odoo/addons
+      - ./data_dir:/var/lib/odoo/.local/share/Odoo
+      - ./odoo-assets:/var/lib/odoo/.local/share/Odoo/ir.assets
+
+  db:
+    image: postgres:13
+    container_name: db
+    environment:
+      - POSTGRES_DB=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
