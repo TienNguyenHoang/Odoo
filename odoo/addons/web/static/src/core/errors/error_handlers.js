@@ -35,7 +35,16 @@ export function rpcErrorHandler(env, error, originalError) {
     if (!(error instanceof UncaughtPromiseError)) {
         return false;
     }
+
+
     if (originalError instanceof RPCError) {
+
+        // Kiểm tra nếu lỗi liên quan đến "FileNotFound"
+        if (originalError.message && originalError.message.includes("FileNotFound")) {
+            console.debug("Suppressed FileNotFound error:", originalError);
+            return true; // Không hiển thị thông báo
+        }
+
         // When an error comes from the server, it can have an exeption name.
         // (or any string truly). It is used as key in the error dialog from
         // server registry to know which dialog component to use.
