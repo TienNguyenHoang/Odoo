@@ -38,7 +38,7 @@ export function rpcErrorHandler(env, error, originalError) {
 
     if (originalError instanceof RPCError) {
 
-        if (originalError.message && originalError.message.includes("The attachment collides with an existing file")) {
+        if (originalError.message && originalError.message.includes("Uncaught Promise")) {
             console.debug("Suppressed attachment collision error:", originalError);
             return true; // Đã xử lý lỗi, không hiển thị hộp thoại
         }
