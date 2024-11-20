@@ -36,13 +36,11 @@ export function rpcErrorHandler(env, error, originalError) {
         return false;
     }
 
-
     if (originalError instanceof RPCError) {
 
-        // Kiểm tra nếu lỗi liên quan đến "FileNotFound"
-        if (originalError.message && originalError.message.includes("FileNotFound")) {
-            console.debug("Suppressed FileNotFound error:", originalError);
-            return true; // Không hiển thị thông báo
+        if (originalError.message && originalError.message.includes("The attachment collides with an existing file")) {
+            console.debug("Suppressed attachment collision error:", originalError);
+            return true; // Đã xử lý lỗi, không hiển thị hộp thoại
         }
 
         // When an error comes from the server, it can have an exeption name.
@@ -84,6 +82,7 @@ export function rpcErrorHandler(env, error, originalError) {
         });
         return true;
     }
+    return false; // Lỗi khác tiếp tục xử lý bởi trình xử lý sau
 }
 
 errorHandlerRegistry.add("rpcErrorHandler", rpcErrorHandler, { sequence: 97 });
