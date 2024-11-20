@@ -48,5 +48,8 @@ ENV PATH="/usr/src/app:${PATH}"
 # Copy tệp cấu hình odoo.conf
 COPY odoo.conf /etc/odoo/odoo.conf
 
+# Copy thư mục data_dir
+COPY ./data_dir /var/lib/odoo/.local/share/Odoo
+
 # Chạy ứng dụng
 CMD ["python", "/usr/src/app/odoo-bin", "--config", "/etc/odoo/odoo.conf"]
