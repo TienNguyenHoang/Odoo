@@ -9,9 +9,9 @@ services:
     environment:
       - DB_HOST=db
       - DB_PORT=5432
-      - DB_USER=odoo_o8id_user
-      - DB_PASSWORD=O1bKSYUM08vpzbkkovexye1qOYbZ52JN
-      - DB_NAME=odoo_o8id
+      - DB_USER=odoo_xd8i_user
+      - DB_PASSWORD=tvbibOMJsWQm1pII4TMzadQvYeV1eYxq
+      - DB_NAME=odoo_xd8i
     depends_on:
       - db
     volumes:
